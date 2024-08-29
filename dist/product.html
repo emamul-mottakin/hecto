@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hecto - shop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font-awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- tailwind css -->
+    <link rel="stylesheet" href="tailwind.css" />
+    <!-- custom css / sass -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="text-custom-blue300 relative">
+    <!-- layer -->
+    <div
+      id="layer"
+      class="hidden absolute w-full h-full backdrop-blur-sm bg-black/30 z-10"
+    ></div>
+
+    <!-- custom alart container -->
+    <div>
+      <!-- alart-danger -->
+      <div
+        id="alart-danger"
+        class="alart-box text-custom-red bg-red-50 border-2 border-red-200"
+      >
+        <p>
+          <span class="mr-1">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </span>
+          <span class="alart-message">Lorem ipsum dolor sit amet.</span>
+        </p>
+        <button class="alart-close btn-animate">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <!-- alart-warning -->
+      <div
+        id="alart-warning"
+        class="alart-box text-yellow-500 bg-yellow-50 border-2 border-yellow-200"
+      >
+        <p>
+          <span class="mr-1">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </span>
+          <span class="alart-message">You didn't asked any question</span>
+        </p>
+        <button class="alart-close btn-animate">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <!-- alart-success -->
+      <div
+        id="alart-success"
+        class="alart-box text-green-500 bg-green-50 border-2 border-green-200"
+      >
+        <p>
+          <span class="mr-1">
+            <i class="fa-solid fa-circle-check"></i>
+          </span>
+          <span class="alart-message">Lorem ipsum dolor sit amet.</span>
+        </p>
+        <button class="alart-close btn-animate">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- navbar -->
+    <nav class="fixed top-0 left-0 w-full z-[100]">
+      <!-- nav heading bar -->
+      <div
+        class="bg-custom-purple100/95 backdrop-blur-sm text-white py-2 text-xs md:text-base"
+      >
+        <div class="container">
+          <div
+            class="flex justify-between max-sm:justify-around max-[530px]:justify-center"
+          >
+            <!-- email & phone -->
+            <div class="flex gap-12 max-[530px]:hidden">
+              <!-- email -->
+              <div class="flex gap-2">
+                <span>
+                  <i class="fa-solid fa-envelope"></i>
+                </span>
+                <p>business@email.com</p>
+              </div>
+              <!-- phone -->
+              <div class="flex gap-2">
+                <span>
+                  <i class="fa-solid fa-phone"></i>
+                </span>
+                <p>+880 1624874915</p>
+              </div>
+            </div>
+            <!-- accessibility -->
+            <div class="flex gap-6">
+              <!-- login -->
+              <div class="flex gap-2">
+                <p class="capitalize">Login</p>
+                <span>
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </div>
+              <!-- Wishlist -->
+              <div class="flex gap-2">
+                <p class="capitalize">Wishlist</p>
+                <span>
+                  <i class="fa-solid fa-heart"></i>
+                </span>
+              </div>
+              <!-- cart -->
+              <div class="flex gap-2">
+                <span class="relative">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span
+                    class="absolute -top-1 -right-5 sm:-right-4 p-2 text-xs leading-[4px] rounded-full bg-custom-red"
+                    >2</span
+                  >
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- nav bar -->
+      <div class="py-3 border bg-white/70 backdrop-blur-sm">
+        <div class="container">
+          <div class="flex justify-between items-center relative">
+            <!-- logo -->
+            <div>
+              <p class="text-custom-blue300 text-4xl font-bold">
+                <a href="index.html">Hecto</a>
+              </p>
+            </div>
+            <!-- nav items -->
+            <div class="sm:flex justify-between items-center gap-12">
+              <!-- navigation list -->
+              <ul
+                id="nav-list"
+                class="flex items-center gap-4 max-sm:absolute max-sm:flex-col max-sm:w-full top-[53px] left-0 max-sm:py-10 transition scale-y-0 sm:scale-y-100 origin-top max-sm:bg-white/70 px-2"
+              >
+                <li>
+                  <a href="index.html">Home</a>
+                </li>
+                <li>
+                  <a href="shop.html">shop</a>
+                </li>
+                <li>
+                  <a href="#">products</a>
+                  <span class="text-xs">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </li>
+                <li>
+                  <a href="#">blog</a>
+                </li>
+                <li>
+                  <a href="#">contact</a>
+                </li>
+                <!-- search icon -->
+                <li class="lg:hidden">
+                  <button
+                    class="bg-custom-pink text-white w-[52px] h-[40px] hidden sm:flex justify-center items-center rounded-sm"
+                  >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </li>
+                <!-- search bar mobile -->
+                <li>
+                  <div class="flex items-center sm:hidden">
+                    <input
+                      class="outline-none w-full py-2 px-3 appearance-none"
+                      type="email"
+                      name="newslater"
+                    />
+                    <button
+                      class="bg-custom-pink text-white px-4 h-[40px] flex justify-center items-center active:scale-95 duration-75 text-xs"
+                    >
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+              <!-- search bar desktop -->
+              <div class="hidden lg:block">
+                <div class="relative">
+                  <input
+                    class="border outline-none py-2 px-3 w-[300px] pr-10 appearance-none"
+                    type="search"
+                    name="default-search"
+                  />
+                  <button
+                    class="bg-custom-pink text-white absolute top-0 right-0 w-[50px] h-full flex justify-center items-center active:scale-95 duration-75"
+                  >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- bar -->
+            <span
+              id="menu-bar-btn"
+              class="text-2xl sm:hidden cursor-pointer active:scale-90 duration-75"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- page cover section -->
+    <section class="cover-img">
+      <div class="cover-layer"></div>
+      <div class="container">
+        <div>
+          <h1 class="section-title text-start mb-2 capitalize">
+            product details
+          </h1>
+          <!-- breadcrumb -->
+          <ul id="shop-breadcrumb" class="text-black flex gap-2">
+            <li class="capitalize"><a href="./index.html">Home /</a></li>
+            <li class="capitalize"><a href="shop.html">shop /</a></li>
+            <li class="capitalize text-custom-pink"><a href="#">product</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- products details -->
+    <main>
+      <section class="pb-40 pt-32 sm:pt-0">
+        <div class="container">
+          <!-- products details wraper -->
+          <div class="p-4 py-6 bg-white rounded shadow-custom-blue">
+            <div
+              class="flex flex-col sm:flex-row sm:items-start gap-4 lg:gap-12"
+            >
+              <!-- product images -->
+              <div
+                class="flex max-[450px]:flex-col-reverse sm:flex-col-reverse md:flex-row gap-2"
+              >
+                <!-- image gallery -->
+                <div
+                  class="flex max-[450px]:flex-row flex-col sm:flex-row md:flex-col justify-between gap-2"
+                >
+                  <div
+                    class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden items-center justify-center bg-gray-50"
+                  >
+                    <img
+                      class="w-full cursor-pointer"
+                      src="img/leatest-new-1.png"
+                    />
+                  </div>
+                  <div
+                    class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden flex items-center justify-center bg-gray-50"
+                  >
+                    <img
+                      class="w-full cursor-pointer"
+                      src="img/leatest-new-5.png"
+                    />
+                  </div>
+                  <div
+                    class="w-24 h-24 lg:w-32 lg:h-32 overflow-hidden items-center justify-center bg-gray-50"
+                  >
+                    <img
+                      class="w-full cursor-pointer"
+                      src="img/leatest-new-3.png"
+                    />
+                  </div>
+                </div>
+
+                <!-- image to display -->
+                <div class="sm:flex justify-center items-center">
+                  <div
+                    class="w-full md:w-60 h-80 md:h-full lg:w-72 flex items-center justify-center overflow-hidden bg-gray-50"
+                  >
+                    <img class="w-full" src="img/leatest-new-6.png" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- product price and details -->
+              <div>
+                <div class="space-y-6">
+                  <!-- product title -->
+                  <h1>Playwood arm chair</h1>
+                  <!-- ratings -->
+                  <div class="text-xs">
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+                    <!-- raitng count -->
+                    <span>(22)</span>
+                  </div>
+                  <!-- price -->
+                  <div class="flex gap-4">
+                    <p>$<span>32.00</span></p>
+                    <p class="text-custom-pink line-through">
+                      $<span>45.00</span>
+                    </p>
+                  </div>
+                  <!-- colors -->
+                  <div class="flex gap-2 items-center">
+                    <p class="mr-2">Colors :</p>
+                    <button
+                      class="bg-custom-pink w-5 h-5 rounded-full block border-2 border-gray-300 btn-animate"
+                    ></button>
+                    <span
+                      class="bg-orange-500 w-5 h-5 rounded-full block border-2 border-gray-300 btn-animate"
+                    ></span>
+                    <span
+                      class="bg-sky-500 w-5 h-5 rounded-full block border-2 border-gray-300 btn-animate"
+                    ></span>
+                  </div>
+                  <!-- description -->
+                  <p class="sub-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Autem expedita iste, tempora eveniet suscipit placeat. lore
+                  </p>
+                  <!-- category -->
+                  <div class="flex gap-4 items-center">
+                    <p>Categories:</p>
+                    <div class="text-xs">
+                      <a href="#" class="sub-text underline">furniture</a>
+                    </div>
+                  </div>
+                  <!-- tags -->
+                  <div class="flex gap-4 items-center">
+                    <p>Tags:</p>
+                    <div class="text-xs flex gap-2 flex-wrap">
+                      <a
+                        href="#"
+                        class="px-2 py-1 bg-gray-200 rounded-full hover:underline"
+                        >furniture</a
+                      >
+                      <a
+                        href="#"
+                        class="px-2 py-1 bg-gray-200 rounded-full hover:underline"
+                        >chair</a
+                      >
+                      <a
+                        href="#"
+                        class="px-2 py-1 bg-gray-200 rounded-full hover:underline"
+                        >sofa</a
+                      >
+                    </div>
+                  </div>
+                  <!-- buttons -->
+                  <div class="flex flex-wrap-reverse gap-4">
+                    <button class="btn-pink px-5 py-2">add to cart</button>
+                    <button class="btn-pink-outline px-5 py-2">
+                      save
+                      <span>
+                        <i class="fa-regular fa-heart"></i>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- product info tabs -->
+      <section class="bg-[#F9F8FE] py-40">
+        <div class="container">
+          <!-- tab btns / tab btn -->
+          <div class="flex gap-6 md:gap-12 flex-wrap">
+            <button
+              class="tab-btn capitalize max-[560px]:text-lg max-[560px]:font-bold font-semibold text-2xl btn-animate underline"
+              data-tab="tab-1"
+            >
+              description
+            </button>
+            <button
+              class="tab-btn capitalize max-[560px]:text-lg max-[560px]:font-bold font-semibold text-2xl btn-animate"
+              data-tab="tab-2"
+            >
+              FAQs
+            </button>
+            <button
+              class="tab-btn capitalize max-[560px]:text-lg max-[560px]:font-bold font-semibold text-2xl btn-animate"
+              data-tab="tab-3"
+            >
+              reviews
+            </button>
+            <button
+              class="tab-btn capitalize max-[560px]:text-lg max-[560px]:font-bold font-semibold text-2xl btn-animate"
+              data-tab="tab-4"
+            >
+              video
+            </button>
+          </div>
+
+          <!-- tab content (Description)-->
+          <div id="tab-1" class="tab-content mt-12 space-y-12">
+            <div>
+              <h6 class="font-semibold text-2xl mb-4">Varius Tempor</h6>
+              <p class="sub-text">
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor
+                ornare faucibus vel sed et eleifend habitasse amet. Montes,
+                mauris varius ac est bibendum. Scelerisque a, risus ac ante.
+                Velit consectetur neque, elit, aliquet. Non varius proin sed
+                urna, egestas consequat laoreet diam tincidunt. Magna eget
+                faucibus cras justo, tortor sed donec tempus. Imperdiet
+                consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in
+                fringilla vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </div>
+            <div>
+              <h6 class="font-semibold text-2xl mb-4">More details</h6>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-4">
+                  <span class="text-lg font-bold">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <p class="sub-text">
+                    Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                    ds diam arcu, nulla lobortis justo netus dis. Eu in
+                    fringilla vulputate nunc nec. Dui, massa viverr .
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-4">
+                  <span class="text-lg font-bold">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <p class="sub-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime aliquam aperiam quia impedit nemo ut? Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Deleniti, nemo.
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-4">
+                  <span class="text-lg font-bold">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <p class="sub-text">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Ullam eveniet aliquam culpa eligendi ut atque quae beatae.
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-4">
+                  <span class="text-lg font-bold">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <p class="sub-text">
+                    Sit amet consectetur adipisicing Lorem ipsum dolor elit.
+                    Totam dolorum alias tempora!
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-4">
+                  <span class="text-lg font-bold">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <p class="sub-text">
+                    Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                    ds diam arcu, nulla lobortis justo netus dis. Eu in
+                    fringilla vulputate nunc nec. Dui, massa viverr .
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- tab content (faq)-->
+          <div id="tab-2" class="tab-content hidden mt-12 space-y-8">
+            <div>
+              <h6 class="font-semibold text-2xl mb-4 capitalize">
+                frequently asked questions
+              </h6>
+              <p class="sub-text">
+                Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor
+                ornare faucibus vel sed et eleifend habitasse amet. Montes,
+                mauris varius ac est bibendum. Scelerisque a, risus ac ante.
+                Velit consectetur neque, elit, aliquet. Non varius proin sed
+                urna, egestas consequat laoreet diam tincidunt. Magna eget
+                faucibus cras justo, tortor sed donec tempus. Imperdiet
+                consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in
+                fringilla vulputate nunc nec. Dui, massa viverr .
+              </p>
+            </div>
+            <!-- faq-one -->
+            <div
+              class="shadow-custom-blue bg-white max-w-[800px] rounded cursor-pointer active:scale-95 duration-200"
+            >
+              <!-- faq-question -->
+              <div
+                class="faq-qs flex justify-between items-center px-8 py-6 gap-10 sm:gap-20"
+              >
+                <p class="font-bold">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Suscipit, reprehenderit?
+                </p>
+                <span class="rotate-180 duration-200 text-xl">
+                  <i class="fa-solid fa-caret-down"></i>
+                </span>
+              </div>
+              <!-- faq-answer -->
+              <div class="faq-ans px-8 py-6">
+                <p class="sub-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati, odio maxime. Aspernatur soluta minus incidunt
+                  corrupti delectus impedit unde nobis quia amet aperiam,
+                  obcaecati, sit perspiciatis, fuga quae velit magnam!
+                </p>
+              </div>
+            </div>
+
+            <!-- faq-two -->
+            <div
+              class="shadow-custom-blue bg-white max-w-[800px] rounded cursor-pointer active:scale-95 duration-200"
+            >
+              <!-- faq-question -->
+              <div
+                class="faq-qs flex justify-between items-center px-8 py-6 gap-10 sm:gap-20"
+              >
+                <p class="font-bold">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Suscipit, reprehenderit?
+                </p>
+                <span class="duration-200 text-xl">
+                  <i class="fa-solid fa-caret-down"></i>
+                </span>
+              </div>
+              <!-- faq-answer -->
+              <div class="faq-ans hidden px-8 py-6">
+                <p class="sub-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati, odio maxime. Aspernatur soluta minus incidunt
+                  corrupti delectus impedit unde nobis quia amet aperiam,
+                  obcaecati, sit perspiciatis, fuga quae velit magnam!
+                </p>
+              </div>
+            </div>
+
+            <!-- faq-three -->
+            <div
+              class="shadow-custom-blue bg-white max-w-[800px] rounded cursor-pointer active:scale-95 duration-200"
+            >
+              <!-- faq-question -->
+              <div
+                class="faq-qs flex justify-between items-center px-8 py-6 gap-10 sm:gap-20"
+              >
+                <p class="font-bold">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Suscipit, reprehenderit?
+                </p>
+                <span class="duration-200 text-xl">
+                  <i class="fa-solid fa-caret-down"></i>
+                </span>
+              </div>
+              <!-- faq-answer -->
+              <div class="faq-ans hidden px-8 py-6">
+                <p class="sub-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati, odio maxime. Aspernatur soluta minus incidunt
+                  corrupti delectus impedit unde nobis quia amet aperiam,
+                  obcaecati, sit perspiciatis, fuga quae velit magnam!
+                </p>
+              </div>
+            </div>
+
+            <hr class="max-w-[800px]" />
+            <!-- ---------------------------------------------------------------- -->
+
+            <!-- add question -->
+            <div
+              class="shadow-custom-blue bg-white max-w-[800px] rounded overflow-hidden"
+            >
+              <!-- user's question -->
+              <div
+                class="flex justify-between items-center pr-8 gap-10 sm:gap-20"
+              >
+                <input
+                  class="px-8 py-6 w-full outline-none font-bold placeholder:font-normal"
+                  type="text"
+                  name="ask-qs"
+                  id="qs-input"
+                  value=""
+                  placeholder="Ask your question"
+                />
+                <button
+                  id="qs-submit-btn"
+                  class="text-xl rotate-45 active:scale-75 duration-150"
+                >
+                  <i class="fa-solid fa-location-arrow"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- user's question and answer's container -->
+            <div id="qs-container"></div>
+          </div>
+
+          <!-- tab content (reviews)-->
+          <div id="tab-3" class="tab-content hidden mt-12">
+            <div class="flex flex-col items-start gap-12">
+              <!-- review one -->
+              <figure
+                class="hover:bg-white duration-150 md:flex md:items-center rounded-xl p-8 overflow-hidden shadow-custom-blue max-w-[800px]"
+              >
+                <img
+                  class="w-24 h-24 rounded-full mx-auto"
+                  src="https://randomuser.me/api/portraits/men/22.jpg"
+                  alt=""
+                  width="384"
+                  height="512"
+                />
+                <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+                  <figcaption class="font-medium">
+                    <div class="font-bold">Sarah Dayan</div>
+                    <div class="text-custom-blue100">
+                      Staff Engineer, Algolia
+                    </div>
+                  </figcaption>
+                  <!-- ratings -->
+                  <div class="text-xs">
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+                  </div>
+                  <blockquote>
+                    <p class="text-lg font-medium sub-text">
+                      “Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Facilis, itaque beatae? Cupiditate reprehenderit vitae
+                      necessitatibus excepturi, soluta sit facilis rem similique
+                      quidem porro eaque, inventore ex placeat maiores,
+                      veritatis tempora”
+                    </p>
+                  </blockquote>
+                </div>
+              </figure>
+
+              <!-- review two -->
+              <figure
+                class="hover:bg-white duration-150 md:flex md:items-center rounded-xl p-8 overflow-hidden shadow-custom-blue max-w-[800px]"
+              >
+                <img
+                  class="w-24 h-24 rounded-full mx-auto"
+                  src="https://randomuser.me/api/portraits/women/8.jpg"
+                  alt=""
+                  width="384"
+                  height="512"
+                />
+                <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+                  <figcaption class="font-medium">
+                    <div class="font-bold">Sarah Dayan</div>
+                    <div class="text-custom-blue100">
+                      Staff Engineer, Algolia
+                    </div>
+                  </figcaption>
+                  <!-- ratings -->
+                  <div class="text-xs">
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+                  </div>
+                  <blockquote>
+                    <p class="text-lg font-medium sub-text">
+                      “Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Facilis, itaque beatae? Cupiditate reprehenderit vitae
+                      necessitatibus excepturi, soluta sit facilis rem similique
+                      quidem porro eaque, inventore ex placeat maiores,
+                      veritatis tempora”
+                    </p>
+                  </blockquote>
+                </div>
+              </figure>
+
+              <!-- review three -->
+              <figure
+                class="md:flex md:items-center rounded-xl p-8 overflow-hidden shadow-custom-blue max-w-[800px]"
+              >
+                <img
+                  class="w-24 h-24 rounded-full mx-auto"
+                  src="https://randomuser.me/api/portraits/men/72.jpg"
+                  alt=""
+                  width="384"
+                  height="512"
+                />
+                <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+                  <figcaption class="font-medium">
+                    <div class="font-bold">Sarah Dayan</div>
+                    <div class="text-custom-blue100">
+                      Staff Engineer, Algolia
+                    </div>
+                  </figcaption>
+                  <!-- ratings -->
+                  <div class="text-xs">
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+
+                    <span class="text-yellow-400"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+                  </div>
+                  <blockquote>
+                    <p class="text-lg font-medium sub-text">
+                      “Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Facilis, itaque beatae? Cupiditate reprehenderit vitae
+                      necessitatibus excepturi, soluta sit facilis rem similique
+                      quidem porro eaque, inventore ex placeat maiores,
+                      veritatis tempora”
+                    </p>
+                  </blockquote>
+                </div>
+              </figure>
+
+              <div class="w-full text-center">
+                <button class="underline btn-animate font-semibold">
+                  read more
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- brand section -->
+    <section class="bg-white py-20">
+      <div class="container">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 justify-center [&>div]:justify-self-center gap-4"
+        >
+          <div><img src="img/brand-1.png" /></div>
+          <div><img src="img/brand-2.png" /></div>
+          <div><img src="img/brand-3.png" /></div>
+          <div><img src="img/brand-4.png" /></div>
+          <div><img src="img/brand-5.png" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer section -->
+    <footer>
+      <!-- footer top -->
+      <div class="bg-[#EEEFFB] py-40">
+        <div class="container">
+          <div
+            class="flex flex-col lg:flex-row justify-center gap-8 xl:gap-x-12 2xl:gap-x-20 capitalize"
+          >
+            <!-- flex col - 1 -->
+            <div
+              class="flex flex-col justify-between sm:flex-row gap-8 xl:gap-x-12 2xl:gap-x-20"
+            >
+              <!-- item one -->
+              <div class="space-y-8">
+                <!-- logo -> Hecto -->
+                <div>
+                  <h2 class="text-4xl text-black font-bold">
+                    <a href="#home">Hecto</a>
+                  </h2>
+                </div>
+                <!-- sign up fild -->
+                <div class="flex items-center">
+                  <input
+                    class="outline-none w-full max-w-[300px] py-2 px-3 appearance-none placeholder:text-xs placeholder:capitalize"
+                    type="email"
+                    name="newslater"
+                    placeholder="Entar email address"
+                  />
+                  <button
+                    class="bg-custom-pink text-white px-4 h-[40px] capitalize active:scale-95 duration-75 text-xs text-nowrap"
+                  >
+                    sign up
+                  </button>
+                </div>
+                <!-- contact location -->
+                <div class="sub-text space-y-2">
+                  <p>contact info</p>
+                  <p>17 Princess Road, London, Greater London NW1 8JR, UK</p>
+                </div>
+              </div>
+              <!-- item two -->
+              <div class="space-y-8">
+                <p class="text-black text-xl font-bold">categories</p>
+                <ul class="sub-text text-nowrap space-y-4">
+                  <li>
+                    <a href="#" class="hover:underline">laptop and computer</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Cameras & Photography</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Smart Phones & Tablets</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Video Games & Consoles</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Waterproof Headphones</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- flex col - 2 -->
+            <div
+              class="flex flex-col justify-between sm:flex-row gap-8 xl:gap-x-12 2xl:gap-x-20"
+            >
+              <!-- item three -->
+              <div class="space-y-8">
+                <p class="text-black text-xl font-bold">categories</p>
+                <ul class="sub-text text-nowrap space-y-4">
+                  <li>
+                    <a href="#" class="hover:underline">laptop and computer</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Cameras & Photography</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Smart Phones & Tablets</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Video Games & Consoles</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Waterproof Headphones</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <!-- item four -->
+              <div class="space-y-8">
+                <p class="text-black text-xl font-bold">categories</p>
+                <ul class="sub-text text-nowrap space-y-4">
+                  <li>
+                    <a href="#" class="hover:underline">laptop and computer</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Cameras & Photography</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Smart Phones & Tablets</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Video Games & Consoles</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Waterproof Headphones</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer bottom -->
+      <div class="bg-[#E7E4F8] py-4">
+        <div class="container">
+          <div class="flex flex-wrap gap-y-4 justify-around items-center">
+            <p class="sub-text lato-regular text-center">
+              ©Webecy - All Rights Reserved
+            </p>
+            <!-- social media icon -->
+            <div class="flex items-center justify-center gap-2">
+              <span
+                class="bg-custom-blue100 text-white text-xs w-6 h-6 cursor-pointer hover:bg-custom-blue300 rounded-full flex justify-center items-center"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </span>
+              <span
+                class="bg-custom-blue100 text-white text-xs w-6 h-6 cursor-pointer hover:bg-custom-blue300 rounded-full flex justify-center items-center"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </span>
+              <span
+                class="bg-custom-blue100 text-white text-xs w-6 h-6 cursor-pointer hover:bg-custom-blue300 rounded-full flex justify-center items-center"
+              >
+                <i class="fa-brands fa-x-twitter"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

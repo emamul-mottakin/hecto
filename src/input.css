@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-pink {
+    @apply px-12 py-4 bg-custom-pink rounded text-white capitalize cursor-pointer active:scale-95 duration-75;
+  }
+  .btn-animate {
+    @apply cursor-pointer active:scale-90 duration-75;
+  }
+  .btn-pink-outline {
+    @apply px-12 py-4 text-custom-pink capitalize ring-2 ring-custom-pink ring-inset hover:bg-custom-pink hover:text-white duration-75 rounded cursor-pointer active:scale-90;
+  }
+  .section-title {
+    @apply text-5xl text-center font-bold capitalize mb-10;
+  }
+  .tab-btn-active {
+    @apply border-b-[1px] border-custom-pink leading-[14px] capitalize text-custom-pink;
+  }
+  .tab-btn {
+    @apply leading-[14px] capitalize;
+  }
+
+  .shadow-custom-blue {
+    @apply shadow-[0_8px_40px_0px_rgba(49,32,138,0.05)];
+  }
+  .cover-img {
+    @apply hidden sm:block bg-[url('img/gradient.gif')] bg-center bg-cover py-20 mt-[98px] md:mt-[106px] relative z-0;
+  }
+  .cover-layer {
+    @apply absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white via-white/95 to-white/80 z-[-1];
+  }
+  .alart-box {
+    @apply fixed top-[-90px] left-0 right-0 mx-auto max-[320px]:w-[250px] max-sm:w-[300px] sm:w-[400px] py-4 px-6 z-[200] flex justify-between items-center gap-2 rounded-md duration-150;
+  }
+}
+
+@layer utilities {
+  .sub-text {
+    --tw-text-opacity: 1;
+    color: rgb(138 143 185 / var(--tw-text-opacity));
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
